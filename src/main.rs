@@ -193,13 +193,13 @@ fn check_win(board: & [[Slot; NUM_COLS]; NUM_ROWS]) -> GameState
     {
         for slot in slot_array
         {
-            if slot.has_bomb && slot.has_flag
+            if slot.has_bomb && slot.has_flag || slot.is_revealed
             {
                 count+=1;
             }
         }
     }
-    if count == 5
+    if count == NUM_ROWS * NUM_COLS // 100
     {
         return GameState::Win;
     }
@@ -248,5 +248,5 @@ fn set_adjacent(coord: (usize,usize), board: & [[Slot; NUM_COLS]; NUM_ROWS]) -> 
         }
         
     }
-    bomb_count
+    return bomb_count;
 }
