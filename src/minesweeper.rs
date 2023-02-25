@@ -7,6 +7,7 @@ pub mod minesweeper_game
     const NUM_ROWS: usize = 10;
     const NUM_COLS: usize = 10;
     const NUM_BOMBS: usize = 15;
+    // Offsets for checking around a spot that is revealed
     const OFFSET: [(isize, isize); 8] = [(1, 0), (-1, 0), (0,1), (0,-1), (-1,-1), (1,-1), (-1, 1), (1, 1)];
 
     pub struct Game 
@@ -227,7 +228,6 @@ pub mod minesweeper_game
                     {  
                         self.recusive_reveal((y as usize,x as usize));
                     }
-                    self.print_board();
                 }
             }
         } // fn recusive_reveal

@@ -1,2 +1,2 @@
 # Recursive-Minesweeper-Rust
-Basic Project to pratice Rust a smidge
+Simple Text Based Recusive Minesweeper Written in Rust.
