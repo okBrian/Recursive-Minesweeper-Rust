@@ -1,6 +1,6 @@
 pub mod minesweeper_game
 {
-    use std::{io::{self, Write}, usize};
+    use std::io::{self, Write};
     use rand::Rng;
 
 
@@ -47,7 +47,7 @@ pub mod minesweeper_game
                 GameState::Win => println!("You Won in: {}!", self.turns),
                 GameState::Loss => println!("Game Over :("),
                 GameState::Quit => println!("Quitting Game...."),
-                GameState::Neutral => println!("An Error has occured!")
+                GameState::Neutral => println!("Error: GameState On Neutral")
             }
         }
 
@@ -84,14 +84,15 @@ pub mod minesweeper_game
                     .read_line(&mut guessed_coords)
                     .expect("Failed to read lines");
                 
-                guessed_coords.retain(|c| !c.is_whitespace());
-                guessed_coords = guessed_coords.to_lowercase();
-        
                 if guessed_coords.len() == 0
                 {
                     println!("Invalid Command Try Again");
                     continue;
                 }
+
+                guessed_coords.retain(|c| !c.is_whitespace());
+                guessed_coords = guessed_coords.to_lowercase();
+        
                 let command = guessed_coords[..1].to_string();
         
                 let mut y = 0;
