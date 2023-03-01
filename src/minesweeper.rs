@@ -10,6 +10,23 @@ pub mod minesweeper_game
     // Offsets for checking around a spot that is revealed
     const OFFSET: [(isize, isize); 8] = [(1, 0), (-1, 0), (0,1), (0,-1), (-1,-1), (1,-1), (-1, 1), (1, 1)];
 
+    #[derive(PartialEq)]
+    enum GameState
+    {
+        Neutral,
+        Quit,
+        Win,
+        Loss
+    }
+    #[derive(Copy,Clone)]
+    struct Slot
+    {
+        character: char,
+        has_bomb: bool,
+        has_flag: bool,
+        is_revealed: bool
+    }
+
     pub struct Game 
     {
         board: [[Slot; NUM_COLS]; NUM_ROWS],
@@ -252,22 +269,5 @@ pub mod minesweeper_game
             }
             return bomb_count;
         } // fn set_adjacent
-    }
-
-    #[derive(PartialEq)]
-    enum GameState
-    {
-        Neutral,
-        Quit,
-        Win,
-        Loss
-    }
-    #[derive(Copy,Clone)]
-    struct Slot
-    {
-        character: char,
-        has_bomb: bool,
-        has_flag: bool,
-        is_revealed: bool
     }
 }
